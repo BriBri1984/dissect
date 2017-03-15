@@ -42,7 +42,7 @@ class Card
 		}
 	}
 
-	//frameworks with have a method named render that has to deal with html markup????
+	//frameworks will have a method named render that has to deal with html markup????
 	public function render()
 	{
 		return '
