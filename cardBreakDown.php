@@ -7,6 +7,9 @@ class Card
 	private $htmlColor;
 	private $color;
 	private $htmlIcon;
+
+	// @samir: The constructor looks great man
+
 								//The arguments will pass the information to the rank and suite properties.
 	public function __construct($rankAsFuck,$suiteAsFuck)
 	{
@@ -43,6 +46,8 @@ class Card
 	}
 
 	//frameworks will have a method named render that has to deal with html markup????
+    // @samir: Yes they certainly will. Typically you should'nt have any HTML in your classes, those will live in templates.
+    // Dont worry about templates for now we can do it this way until we get into symfony
 	public function render()
 	{
 		return '
@@ -51,7 +56,5 @@ class Card
 		</div>
 		';
 	}
-
-
-
+    
 }
