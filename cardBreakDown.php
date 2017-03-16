@@ -102,6 +102,27 @@ class Deck
 		return $cards;
 	}
 
+class Player
+{
+	//??? In this challenge is private and protected the same since there's no inherting classes ???
+
+	// Since the Player class is only tracking one player at a time, the property name  will only have one string as it's value
+	protected $name;
+	// The hand property will later be used for the class Game to hold the player's cards
+	protected $hand =[];
+
+	// This class will be instatiated in the Game class and will be used to hold hold the players name, one by one
+	public function __construct($firstName){
+		$this->name = $firstName;
+	}
+
+	// giveCard method will be used in the class Game, in the method playGame during a loop to hold the player's hand
+	public function giveCard($card){
+		$this->hand[] = $card;
+	}
+
+}
+
 
 }
 
