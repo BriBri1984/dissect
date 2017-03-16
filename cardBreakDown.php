@@ -98,7 +98,7 @@ class Deck
 		}
 		// The shuffle function with take the property cards with all the items from the loops and randomly shuffle the array to give them a new order.
 		shuffle($cards);
-		// Returns the finish product of the property cards when this class Deck is called due the constructor.
+		// Returns the finish product to the property cards when the class Deck is called due to the constructor.
 		return $cards;
 	}
 
