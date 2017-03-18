@@ -101,7 +101,7 @@ class Deck
 		// Returns the finish product to the property cards when the class Deck is called due to the constructor.
 		return $cards;
 	}
-
+}
 class Player
 {
 	//??? In this challenge is private and protected the same since there's no inherting classes ???
@@ -123,18 +123,61 @@ class Player
 
 }
 
+class Game
+{
+	// Keeps track of the number of cards each player will receive
+	protected $numCards;
+	// Keeps track of the player's names
+	protected $playerNames;
+	// Keeps track of the cards each player will receive
+	protected $players = [];
+	// Holds on to the deck thats transfered from the class Deck
+	protected $deck;
 
+	// This constructor will gather the information from the arguments(names,#cards) during the instantiation
+								// I know its easier just to name the arguments the same as the properties
+								//but i wanted to see the relationships 
+	public function __construct($namesOfPlayers,$numberOfCards)
+	{
+		// Once an object is created it will pass the information to namesOfPlayers and will be inserted to playerNames proprety 
+		$this->playerNames = $namesOfPlayers;
+		// Deck() is instansiated and is inserted to deck proprety
+		$this->deck = new Deck();
+		// Once an object is created it will pass the information to numberOfCards and will be inserted to numCards proprety 
+		$this->numCards = $numberOfCards;
+	}
+
+	
+	public function playGame()
+	{
+		// This foreach loop will give the list of players names and send it to the instantiated object $player, each player will pass thier name as an argument to satisfy constructor in the class Player 
+		foreach($this->playerNames as $name){
+			$player = new Player($name);
+
+			// This for loop will start at zero, while $i is less than the number of cards in the $numCards proprety, the loop will add an additional card until it reaches the $numCards
+			// getCard() will remove the last card from the deck and will store it in this classes $deck proprety, the method $giveCard from the class player will use $desk as an argument
+			for ($i=0; $i < $this->numCards; $i++) { 
+				$player->giveCard($this->deck->getCard());
+			}
+
+			//Each $player will be added to the proprety $players in this class
+			$this->players[] = $player;
+
+		}
+	}
 }
 
 
-
-
-
-$cards = new Deck;
 echo '<pre>';
-//print_r($cards);
-// For some reason I can't display the card images on the browser. I'm not getting an error???????
-foreach ($cards as $card){
-	echo $card->render();
+$playerNames = ['Brian', 'Samir', 'Judah', 'Ashley', 'Jason'];
+$numOfCards = 3;
+$game = new Game($playerNames,$numOfCards);
+$game->playGame();
+print_r($game);
+ 
+ 
 
-}
+
+
+
+
